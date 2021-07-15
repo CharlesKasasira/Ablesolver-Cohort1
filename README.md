@@ -2,7 +2,7 @@
 We looked at unit and integration testing At the Ablestate, and here is what we looked at.
 
 
-sessions by [*Coach david*](github.com/davidofug)
+sessions by [*Coach David*](github.com/davidofug)
 
 Session No. | Session Topics
 ----------- | --------------
