@@ -1,0 +1,11 @@
+{
+  "name": "session8",
+  "version": "0.0.1",
+  "description": "events and forms",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Charles Kasasira",
+  "license": "ISC"
+}
