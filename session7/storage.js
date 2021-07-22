@@ -79,3 +79,14 @@ console.log(city);
 //Imagine you have a key called invoice and you to store invoice about it. 
 //Such as the invoice number, amount, items
 // We introduce JSON.
+
+
+
+let setCookie=(name,value,days) => {
+    const today = new Date();
+    today.setTime(today.getTime() + (days*24*60*60*1000))
+    let expires ="expires=" + today.toUTCString();
+    document.cookie =`${ name}` + "=" + `${value}` + ";" + `${expires}`;
+}
+let myCookie = setCookie('name','Anita',20)
+ console.log(myCookie)
