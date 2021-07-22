@@ -8,4 +8,4 @@ Session No. | Session Topics
 ----------- | --------------
 session 6 | [Unit & Integration Testing](https://github.com/CharlesKasasira/Ablestate-Solver-Cohort1/tree/Day4/session6) 
 session 7 | [Cookies, Sessions, LocalStorage]()
-session 8 | [Events]()
+session 8 | [Events](https://github.com/CharlesKasasira/Ablesolver-Cohort1/tree/events-day4/session8)
