@@ -29,15 +29,24 @@ const SPLIT = DECODED_COOKIE.split(";");
 // let userInfoStored = document.cookie
 // console.log(userInfoStored)
 
-let setGetItNowTime = () => {
-    let now = new Date()
-    let time = now.toTimeString()
-    now.setTime(now.getTime() + (1 * 24 * 60 * 60 * 1000))
-    let expire = now.toUTCString()
-    document.cookie =`getNowClick=${time}; expires=${expire}; path=/get-it-now`;
-}
+// let setGetItNowTime = () => {
+//     let now = new Date()
+//     let time = now.toTimeString()
+//     now.setTime(now.getTime() + (1 * 24 * 60 * 60 * 1000))
+//     let expire = now.toUTCString()
+//     document.cookie =`getNowClick=${time}; expires=${expire}; path=/get-it-now`;
+// }
 
 // Quiz: Write a program that stores a cookie will expire 20days after it's created and make sure that the cookie is HttpOnly
+
+
+today = new Date()
+today.setTime(today.getTime() + (20 * 24 * 60 * 60 * 1000))
+expires = today.toUTCString();
+document.cookie = `charles kasasira;  expires=${expires}; path=/`;
+
+
+
 
 //2. sessionStorage
 //Session storage is used to store data at the active state of the web page.
