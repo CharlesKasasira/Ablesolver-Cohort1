@@ -1,4 +1,3 @@
-
 let parseJSON = user => {
     return {
       fullName: `${user.firstName} ${user.lastName}`,
