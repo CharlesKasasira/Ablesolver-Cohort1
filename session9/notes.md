@@ -13,4 +13,4 @@ HTTP VERBS/Methods: Represent the different actions to be performed in the syste
 - ***PUT*** -> Update data in the API
 - ***PATCH*** -> Perform multiple updates in API
 
-Read more here https://developer.mozilla.org/
+Read more here https://developer.mozilla.org/en-Us/docs/Web/HTTP/methods
