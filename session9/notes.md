@@ -1,6 +1,6 @@
 # API
 API is short for Application Programming Interface.
-API is like a bridge, it enavles communication between 2 or more applications(systems).
+API is like a bridge, it enables communication between 2 or more applications(systems).
 
 They communicate via HTTP which is short for HyperText Transfer Protocol via a path/route which follows the following format such as http(s)://domain.tld:port/endpoint
 
