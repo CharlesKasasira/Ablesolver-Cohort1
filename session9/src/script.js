@@ -10,8 +10,8 @@ let generatedHTMLRows = ''
 /**
  * Fetch() function
  * The fetch() method in JavaScript is used to request to the server and load the information in the webpages.
- * function(url, option) it accepts two (2) parameters url and the second(optional).
- * It returns promises whether it is resolved or not. The return data can be of the format
+ * function(url, option) it requires one parameter, which is the url but can have other optional parameter.
+ * It returns promises whether it is resolved or not.
  */
 
 fetch('https://jsonplaceholder.typicode.com/todos')
@@ -29,6 +29,9 @@ fetch('https://jsonplaceholder.typicode.com/todos')
                         <td>${todo.completed ? 'Completed':'Incomplete'}</td>
                     </tr>
                 `; // Explain this block of code
+                /**
+                 * this adds row the table with column data id, userId title and status as long as the todo is still greater than 0
+                 */
             })
         }
 
