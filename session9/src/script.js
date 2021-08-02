@@ -1,6 +1,6 @@
 const TABLE_DATA = document.getElementById('table-data')
 
-let generatedHTMLRows = ''
+let generatedTableRows = ''
 
 
 /**
@@ -19,21 +19,29 @@ fetch('https://jsonplaceholder.typicode.com/todos')
     .then((json) => {
         let todos = json 
 
+        
         if(todos && todos.length > 0){ // Explain what this code does.
             todos.forEach(todo => {
-                generatedHTMLRows += `
+
+        fetch(`https://jsonplaceholder.typicode.com/${todo.userId}`)
+            .then((response) => response.json())
+            .then(user =>{
+                generatedTableRows += `
                     <tr>
                         <td>${todo.id}</td>
-                        <td>${todo.userId}</td>
+                        <td>${user.name}</td>
                         <td>${todo.title}</td>
                         <td>${todo.completed ? 'Completed':'Incomplete'}</td>
                     </tr>
                 `; // Explain this block of code
+                TABLE_DATA.innerHTML += generatedTableRows
                 /**
                  * this adds row the table with column data id, userId title and status as long as the todo is still greater than 0
                  */
             })
+                
+            })
         }
 
-        TABLE_DATA.innerHTML = generatedHTMLRows;
+        TABLE_DATA.innerHTML = generatedTableRows;
     })
