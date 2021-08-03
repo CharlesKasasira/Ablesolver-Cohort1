@@ -1,47 +1,82 @@
-const TABLE_DATA = document.getElementById('table-data')
+// const TABLE_DATA = document.getElementById('table-data')
+const TABLE_DATA = document.querySelector('#table-data')
+const PAGINATION = document.querySelector('#pagination')
+// const PER_PAGE =  document.querySelector('#per_page')
 
-let generatedTableRows = ''
+document.body.addEventListener('click', (event) => { //Event delegation
+  // console.log(event.target.dataset.page)
+  if (event.target.dataset.page) {
+    let { page } = event.target.dataset;
+    let per_page = 10
+    retrieveWithPagination(page, per_page)
+    // console.log(page);
+  }
+})
 
+/** 
+* Read this resource https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch and 
+* Explain the fetch() function
+*/
+let todos = []
 
-/**
- * Read this resource https://developer.mozilla.org/en-US/docs/Web/APT/Fetch_API/Using_fetch
- */
-// Explain the fetch() function
-/**
- * Fetch() function
- * The fetch() method in JavaScript is used to request to the server and load the information in the webpages.
- * function(url, option) it requires one parameter, which is the url but can have other optional parameter.
- * It returns promises whether it is resolved or not.
- */
+let retrieveWithPagination = (page = 1, numberOfItemsPerPage = 10) => {
+  let buttons = "", generatedTableRows = '';
 
-fetch('https://jsonplaceholder.typicode.com/todos')
-    .then((response)  => response.json())
+  fetch("https://jsonplaceholder.typicode.com/todos") // Retrieve todos
+    .then((response) => response.json())
     .then((json) => {
-        let todos = json 
 
-        
-        if(todos && todos.length > 0){ // Explain what this code does.
-            todos.forEach(todo => {
+      // console.log(json.length)
+      // Generate pagination
+      const MAX_PAGES = Math.floor(json.length / numberOfItemsPerPage);
 
-        fetch(`https://jsonplaceholder.typicode.com/${todo.userId}`)
-            .then((response) => response.json())
-            .then(user =>{
-                generatedTableRows += `
-                    <tr>
-                        <td>${todo.id}</td>
-                        <td>${user.name}</td>
-                        <td>${todo.title}</td>
-                        <td>${todo.completed ? 'Completed':'Incomplete'}</td>
-                    </tr>
-                `; // Explain this block of code
-                TABLE_DATA.innerHTML += generatedTableRows
-                /**
-                 * this adds row the table with column data id, userId title and status as long as the todo is still greater than 0
-                 */
+      const START_POSITION = (page - 1)* numberOfItemsPerPage;
+      
+    
+      todos = json.slice(START_POSITION).slice(0, numberOfItemsPerPage);
+      let i = 1;
+
+      while (i <= MAX_PAGES) {
+        //Generate buttons
+        buttons += `<button data-page="${i}" >${i}</button>`
+        i++;
+      }
+    }).then(() => {
+
+      if (todos && todos.length > 0) {
+        // Check whether there are some todos
+
+        todos.forEach((todo) => {
+          //Explain what this does
+          /**
+           * At every iteration the todo is like below
+           * todo = { 'userId': 1, 'id': 1, 'title': 'title', 'complete': false }
+           */
+          let { id, userId, title, completed } = todo;
+
+          fetch(`https://jsonplaceholder.typicode.com/users/${userId}`) //Retrieve the name of the user who owns the todo item.
+            .then((response) => response.json()) // Convert response to json
+            .then((user) => {
+              // Get the converted the json
+              let { name } = user;
+
+              generatedTableRows += `
+                <tr>
+                    <td>${id}</td>
+                    <td>${name}</td>
+                    <td>${title}</td>
+                    <td>${completed ? "Completed" : "Incomplete"}</td>
+                </tr>`;
             })
-                
+            .then(() => {
+              TABLE_DATA.innerHTML = generatedTableRows;
+              PAGINATION.innerHTML = buttons
             })
-        }
-
-        TABLE_DATA.innerHTML = generatedTableRows;
+            .catch((err) => console.log(err));
+        });
+      }
     })
+    .catch((err) => console.log(err));
+}
+
+retrieveWithPagination()
