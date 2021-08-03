@@ -1,17 +1,33 @@
 // const TABLE_DATA = document.getElementById('table-data')
 const TABLE_DATA = document.querySelector('#table-data')
 const PAGINATION = document.querySelector('#pagination')
-// const PER_PAGE =  document.querySelector('#per_page')
+let PER_PAGE =  document.querySelector('#per_page')
 
-document.body.addEventListener('click', (event) => { //Event delegation
-  // console.log(event.target.dataset.page)
-  if (event.target.dataset.page) {
-    let { page } = event.target.dataset;
-    let per_page = 10
+let per_page = parseInt(PER_PAGE.value) || 10
+
+PER_PAGE.onblur = () => {
+  per_page = parseInt(PER_PAGE.value)
+  retrieveWithPagination(1, per_page)
+}
+
+document.body.onclick = (event) => {
+  if( event.target.dataset.page){
+    let {page} = event.target.dataset
+    per_page = parseInt(document.querySelector('#per_page').value) || per_page
+
     retrieveWithPagination(page, per_page)
-    // console.log(page);
   }
-})
+}
+
+// document.body.addEventListener('click', (event) => { //Event delegation
+//   // console.log(event.target.dataset.page)
+//   if (event.target.dataset.page) {
+//     let { page } = event.target.dataset;
+//     let per_page = 10
+//     retrieveWithPagination(page, per_page)
+//     // console.log(page);
+//   }
+// })
 
 /** 
 * Read this resource https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch and 
