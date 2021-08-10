@@ -8,8 +8,9 @@ const PORT  = process.env.PORT || 8888
 const SERVER = HTTP.createServer((request, response) => {
     response.statusCode = 200
     response.setHeader('Content-Type', 'text/plain')
-    //jTo send environment variables at the process you cn do
-    // ENV_NAME=ENV_VALUE node filename at the CLI
+    //To send environment variables at the process you can do
+    // 
+    
     // OR add them to the .env file.
     // Then add the dotenv package to your node app
     // -> yarn add dotenv or npm and dotenv
@@ -18,8 +19,9 @@ const SERVER = HTTP.createServer((request, response) => {
     // echo .env > .gitignore
     // echo node_modules/ >> .gitignore
 
-    let {SALT} = process.env
-    response.end(process.env.PUBLIC_KEY)
+    let {APP_NAME} = process.env
+
+    response.end(`${APP_NAME}\n ${process.env.PUBLIC_KEY}`)
     
 })
 
