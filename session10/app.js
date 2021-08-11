@@ -9,7 +9,7 @@ const SERVER = HTTP.createServer((request, response) => {
     response.statusCode = 200
     response.setHeader('Content-Type', 'text/plain')
     //To send environment variables at the process you can do
-    // 
+    // ENV_NAME=ENV_VALUE node filename at the CLI
     
     // OR add them to the .env file.
     // Then add the dotenv package to your node app
