@@ -7,25 +7,33 @@
 
 const HTTP = require('http')
 require('dotenv').config()
-const { PORT} = process.env 
+const {SERVERNAME, PORT} = process.env 
 
-const HOSTNAME = localhost
+// const HOSTNAME = localhost
 
 const SERVER = HTTP.createServer((request, response) => {
     response.statusCode = 200
     response.setHeader('Content-Type', 'text/html')
-        const {argv} = process 
+        let {argv} = process;
+        argv = require('minimist')(argv.slice(2)) // You need to use require the mininmist package to be able to access name arguments
+        // To name the argument you pass it like
+        // node filename --key=value
+        // console.log(argv)
+
         let html = ''
-        if (argv.length>0){
-            argv.forEach((name) =>{
-                html += `<p>${name}</p>`
-            });
-        }
+        html = argv['school']
+
+        // if (argv.length>0){
+        //     argv.forEach((name) =>{
+        //         html += `<p>${name}</p>`
+        //     });
+        // }
+
     response.end(`<h1>Server running!</h1> ${html}`)
 })
 
-SERVER.listen(PORT, HOSTNAME, ()=>{
-    console.log(`Server running on ${HOSTNAME}:${PORT}`)
+SERVER.listen(PORT, SERVERNAME, ()=>{
+    console.log(`Server running on ${SERVERNAME}:${PORT}`)
     const {argv} = process 
     
     if(argv.length > 0){
