@@ -2,7 +2,7 @@
 // To provide the cli arguments at the CLI/Terminal use the following syntax
 // node filename arg1 agr2 arg3
 // Then from your node use the process.argv to access all the arguments
-// In the code clossely look at line 13 to 20 which ouputs the CKI argumens to the wevpage
+// In the code clossely look at line 13 to 20 which ouputs the CLI arguments to the wevpage
 // and line 26 to 31 which output the CLI arguments to the console.
 
 const HTTP = require('http')
@@ -15,20 +15,9 @@ const SERVER = HTTP.createServer((request, response) => {
     response.statusCode = 200
     response.setHeader('Content-Type', 'text/html')
         let {argv} = process;
-        argv = require('minimist')(argv.slice(2)) // You need to use require the mininmist package to be able to access name arguments
-        // To name the argument you pass it like
-        // node filename --key=value
-        // console.log(argv)
-
+        argv = require('minimist')(argv.slice(2))
         let html = ''
         html = argv['school']
-
-        // if (argv.length>0){
-        //     argv.forEach((name) =>{
-        //         html += `<p>${name}</p>`
-        //     });
-        // }
-
     response.end(`<h1>Server running!</h1> ${html}`)
 })
 
