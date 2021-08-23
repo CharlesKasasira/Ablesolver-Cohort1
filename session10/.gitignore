@@ -1,2 +1,14 @@
 node_modules/
 .env
+../session6/
+../session7/
+../session8/
+../session9/
+arithmeticpackage
+districts
+app.js
+input-from-cli.js
+other-types-of-questions-cli.js 
+process-student-names.js 
+RELP_session.md 
+use.arithmeticLibrary.js 
