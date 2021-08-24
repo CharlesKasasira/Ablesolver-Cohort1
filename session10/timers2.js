@@ -40,42 +40,52 @@
 
 // }, 1000)
 
-let payroll = [
-    {
-        "salary": "UGX 15M",
-        "paydate": "25th",
-        "status": false,
-        "name": "David",
-    },
-    {
-        "name": "Jonathan",
-        "salary": "UGX 13M",
-        "paydate": "30th",
-        "status": true 
-    },
-    {
-        "name": "Joanita",
-        "salary": "UGX 13M",
-        "paydate": "30th",
-        "status": false
-    }
-]
+// let payroll = [
+//     {
+//         "salary": "UGX 15M",
+//         "paydate": "25th",
+//         "status": false,
+//         "name": "David",
+//     },
+//     {
+//         "name": "Jonathan",
+//         "salary": "UGX 13M",
+//         "paydate": "30th",
+//         "status": true 
+//     },
+//     {
+//         "name": "Joanita",
+//         "salary": "UGX 13M",
+//         "paydate": "30th",
+//         "status": false
+//     }
+// ]
 
-let index = 0
-const PAYROLL_INTERVAL_ID = setInterval(() => {
+// let index = 0
+// const PAYROLL_INTERVAL_ID = setInterval(() => {
 
-    if(payroll[index].status == false){
+//     if(payroll[index].status == false){
 
-        console.log(`Name: ${payroll[index]['name']} Salary: ${payroll[index].salary} Payment on: ${payroll[index]['paydate']}`)
-        payroll[index]['status'] = true 
-    }
+//         console.log(`Name: ${payroll[index]['name']} Salary: ${payroll[index].salary} Payment on: ${payroll[index]['paydate']}`)
+//         payroll[index]['status'] = true 
+//     }
 
-    index++;
+//     index++;
 
-    if(index === payroll.length) {
-        clearInterval(PAYROLL_INTERVAL_ID)
-        console.log(payroll)
-    }
-}, 1000)
+//     if(index === payroll.length) {
+//         clearInterval(PAYROLL_INTERVAL_ID)
+//         console.log(payroll)
+//     }
+// }, 1000)
+
+let times = 0
+const printMyName = () => {
+    console.log(`Printed: ${times}`)
+    times += 4
+    const id = setTimeout(printMyName, 1000)
+    if(times === 36) clearInterval(id)
+}
+
+setTimeout(printMyName, 1000)
 
 
