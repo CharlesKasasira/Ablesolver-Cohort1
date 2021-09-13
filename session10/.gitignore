@@ -20,4 +20,7 @@ events.js
 async-await.js 
 request-handling.js 
 request-handling-2.js
-file-manage.js  
+file-manage.js
+file-paths.js 
+file-stats.js 
+logs
