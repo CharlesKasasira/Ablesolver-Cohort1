@@ -15,3 +15,12 @@ console.log(absPath)
 
 const absPath2 = path.resolve('tmp', 'file.txt')
 console.log(absPath2)
+
+// If you specify a foward slash / on the first argument the resolve will it's a absolute path.
+const absPath3 = path.resolve('/etc','joe.txt')
+console.log(absPath3)
+
+//You also use ../ and double slashes
+const absPath4 = path.resolve('/Users/joe/..//test.txt')
+console.log(absPath4)
+
