@@ -24,3 +24,5 @@ file-manage.js
 file-paths.js 
 file-stats.js 
 logs
+file-paths-2.js
+read-file.js
