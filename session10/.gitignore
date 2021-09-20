@@ -31,4 +31,6 @@ test.txt
 test1.txt 
 test2.txt 
 return-files-only.js 
+os-management.js 
+read-directory-contents.js 
 
